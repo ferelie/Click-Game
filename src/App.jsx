@@ -11,7 +11,6 @@ function App() {
         <TimerChallenge title="medium" targetTime={5} />
         <TimerChallenge title="hard" targetTime={10} />
         <TimerChallenge title="very hard" targetTime={15} />
-        <TimerChallenge title="extreme" targetTime={20} />
       </div>
     </>
   );
