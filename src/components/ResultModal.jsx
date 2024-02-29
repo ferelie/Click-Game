@@ -1,20 +1,23 @@
 import React, { forwardRef } from "react";
 
 const ResultsModal = forwardRef(function ResultsModal(
-  { result, targetTime },
+  { timeRemaining, targetTime, onReset },
   ref
 ) {
+  const userLost = timeRemaining <= 0;
+  const formattedTime = (timeRemaining / 1000).toFixed(2);
+
   return (
     <dialog ref={ref} className="result-modal">
       <p>
-        You {result}!
+        {userLost && <h2>You Lost!</h2>}
         <br />
         The target time was <strong>{targetTime}</strong> seconds.
         <br />
-        You stopped the timer with <strong>X seconds left</strong>
+        You stopped the timer with <strong>{formattedTime} seconds left</strong>
       </p>
       <form>
-        <button type="submit">Play again</button>
+        <button type="submit" onSubmit={onReset} >Play again</button>
       </form>
     </dialog>
   );
